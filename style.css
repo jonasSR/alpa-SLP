@@ -1,0 +1,583 @@
+:root {
+    --primary: #bc6c25;
+    --accent: #606c38;
+    --bg: #fefae0;
+    --text: #283618;
+    --white: #ffffff;
+}
+html {
+    scroll-behavior: smooth;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+/* --- HEADER & NAVEGAÇÃO --- */
+header {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(rgba(254, 250, 224, 0.4), var(--bg)), 
+                url('https://images.unsplash.com/photo-1450778869180-41d0601e046e?q=80&w=2000');
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+}
+
+/* Atualização da Navegação */
+.header-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between; /* Empurra o menu para a direita */
+    align-items: center;
+    z-index: 100;
+    /* Efeito de vidro opcional ao rolar (ver nota abaixo) */
+    background: rgba(254, 250, 224, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-menu li a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Linha animada ao passar o mouse */
+.nav-menu li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary);
+    transition: width 0.3s ease;
+}
+
+.nav-menu li a:hover::after {
+    width: 100%;
+}
+
+.nav-menu li a:hover {
+    color: var(--primary);
+}
+
+/* Responsividade para Celular */
+@media (max-width: 768px) {
+    .header-nav {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+    
+    .nav-menu {
+        gap: 15px;
+        font-size: 0.8rem;
+    }
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.main-logo {
+    max-width: 120px; /* Reduzido de 200px para 120px */
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+/* Opcional: Efeito suave ao passar o mouse no logo */
+.main-logo:hover {
+    transform: scale(1.05);
+}
+
+/* Ajuste para telas pequenas (celular) */
+@media (max-width: 768px) {
+    .main-logo {
+        max-width: 90px; /* Ainda menor em celulares */
+    }
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.city-name {
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 1.2rem;
+    color: var(--text);
+}
+
+.sub-city {
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+.hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero-content h1 em { color: var(--primary); font-style: italic; }
+
+.hero-content p {
+    max-width: 550px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    opacity: 0.8;
+}
+
+/* --- COMPONENTES --- */
+.impact-container {
+    max-width: 1100px;
+    margin: -60px auto 80px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 0 20px;
+    position: relative;
+    z-index: 5;
+}
+
+.impact-card {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+.impact-card.featured {
+    background: var(--primary);
+    color: var(--white);
+}
+
+.impact-number {
+    display: block;
+    font-size: 3rem;
+    font-weight: 700;
+    font-family: 'Playfair Display';
+}
+
+.adoption-section { padding: 80px 5%; }
+
+.section-header { text-align: center; margin-bottom: 60px; }
+
+.section-label { 
+    color: var(--primary); 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    font-weight: 600; 
+    font-size: 0.8rem; 
+}
+
+.adoption-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 35px;
+}
+
+.animal-card {
+    background: var(--white);
+    border-radius: 25px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.animal-card:hover { transform: translateY(-10px); }
+
+.animal-img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.animal-desc { padding: 25px; }
+
+.pix-section {
+    background: var(--text);
+    color: var(--white);
+    padding: 70px 20px;
+    margin: 40px 20px;
+    border-radius: 50px;
+    text-align: center;
+}
+
+.pix-box {
+    margin-top: 40px;
+    background: rgba(255,255,255,0.05);
+    display: inline-block;
+    padding: 40px;
+    border-radius: 25px;
+    border: 1px dashed var(--primary);
+}
+
+.pix-key {
+    display: block;
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    color: var(--primary);
+    margin-top: 10px;
+}
+
+.btn-donate {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--primary);
+    color: white;
+    padding: 12px 22px; /* Reduzido de 18px 30px */
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem; /* Fonte um pouco menor */
+    box-shadow: 0 8px 20px rgba(188, 108, 37, 0.3);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Efeito de leve aumento ao passar o mouse */
+.btn-donate:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(188, 108, 37, 0.4);
+    background: #a65d1d; /* Um tom levemente mais escuro que o primary */
+}
+
+/* Ajuste para telas pequenas (celular) */
+@media (max-width: 480px) {
+    .btn-donate {
+        padding: 10px 18px;
+        font-size: 0.75rem;
+        bottom: 15px;
+        right: 15px;
+    }
+}
+
+.reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+/* --- RODAPÉ MINIMALISTA CENTRALIZADO --- */
+.main-footer {
+    background-color: var(--text);
+    color: var(--bg);
+    padding: 50px 20px 40px;
+    text-align: center; /* Centraliza todo o texto */
+    border-radius: 60px 60px 0 0;
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza flex-items */
+    gap: 40px;
+}
+
+.footer-brand .city-name {
+    font-size: 2.5rem;
+    color: var(--primary);
+    display: block;
+    letter-spacing: 5px;
+}
+
+.footer-brand .sub-city {
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    opacity: 0.7;
+}
+
+.footer-tagline {
+    margin-top: 15px;
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* Navegação do Rodapé */
+.footer-nav-bottom {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-nav-bottom a {
+    color: var(--bg);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+.footer-nav-bottom a:hover {
+    color: var(--primary);
+}
+
+.dot {
+    opacity: 0.3;
+}
+
+/* Círculos Sociais */
+.footer-social-circles {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-social-circles a {
+    width: 45px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-social-circles a img {
+    width: 20px;
+    height: 20px;
+    filter: invert(1); /* Deixa ícones brancos */
+}
+
+.footer-social-circles a:hover {
+    background: var(--primary);
+    transform: translateY(-5px);
+}
+
+/* Rodapé Legal */
+.footer-legal {
+    margin-top: 80px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(254, 250, 224, 0.05);
+    font-size: 0.8rem;
+    opacity: 0.4;
+}
+
+.cnpj {
+    margin-top: 5px;
+    letter-spacing: 1px;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .footer-nav-bottom {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .dot { display: none; }
+}
+
+/* Estilo para as fotos dos membros */
+.member-photo-container {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
+    overflow: hidden;
+    border-radius: 50%; /* Faz o círculo perfeito */
+    border: 3px solid var(--primary); /* Adiciona um aro na cor do site */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.member-img {
+    width: 100%;
+    object-fit: cover; /* Garante que a foto não estique */
+    transition: transform 0.4s ease;
+}
+
+.impact-card:hover .member-img {
+    transform: scale(1.1); /* Efeito de zoom suave ao passar o mouse */
+}
+
+.member-role {
+    font-size: 0.9rem;
+    color: var(--primary);
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+.instagram-icon {
+    font-size: 1.4rem; /* Tamanho do ícone */
+    color: var(--text);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.instagram-icon:hover {
+    color: #E1306C; /* Cor oficial do Instagram ao passar o mouse */
+    transform: translateY(-2px);
+}
+
+/* Remove a linha animada embaixo do ícone do instagram */
+.nav-menu li a.instagram-icon::after {
+    display: none;
+}
+
+/* Efeito de Vidro e Suavidade */
+:root {
+    --primary: #bc6c25;
+    --primary-dark: #a65d1d;
+    --accent: #606c38;
+    --bg: #fefae0;
+    --text: #283618;
+    --white: #ffffff;
+    --soft-shadow: 0 20px 40px rgba(40, 54, 24, 0.08);
+}
+
+/* Melhoria no Hero */
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(40, 54, 24, 0.4) 0%, var(--bg) 95%);
+    z-index: 1;
+}
+
+.hero-content { z-index: 2; position: relative; }
+
+.badge {
+    background: var(--accent);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+/* Cards de Animais com Efeito "Soft Floating" */
+.animal-card {
+    border: 1px solid rgba(188, 108, 37, 0.1);
+    box-shadow: var(--soft-shadow);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.animal-card:hover {
+    transform: translateY(-15px) scale(1.02);
+}
+
+/* Seção de Frase Impactante */
+.quote-section {
+    padding: 100px 20px;
+    text-align: center;
+    background: var(--accent);
+    color: var(--bg);
+}
+
+.quote-container p {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-style: italic;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Estilo do PIX mais moderno */
+.pix-box {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(188, 108, 37, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.pix-box:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--primary);
+}
+
+
+/* Container dos ícones no menu */
+.social-icons-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espaço entre Instagram e Facebook */
+    margin-left: 10px;
+}
+
+.social-icons-wrapper img {
+    width: 22px;
+    height: 22px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.social-icons-wrapper a:hover img {
+    transform: translateY(-3px);
+    opacity: 0.8;
+}
+
+/* Remove a linha animada embaixo dos ícones sociais */
+.social-icons-wrapper a::after {
+    display: none !important;
+}
+
+/* Cor específica no hover do Facebook */
+.facebook-icon:hover img {
+    filter: brightness(0) saturate(100%) invert(31%) sepia(94%) saturate(1145%) hue-rotate(196deg) brightness(96%) contrast(94%);
+}
+
+/* Ajuste para celular */
+@media (max-width: 768px) {
+    .social-icons-wrapper {
+        justify-content: center;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+}
+
+/* Ajuste fino para o ícone do Facebook */
+.facebook-icon {
+    display: flex;
+    align-items: center;
+    margin-top: -0px; /* Ajuste mínimo para alinhar visualmente */
+}
+
+/* Garante que ambos os ícones fiquem centralizados entre si */
+.social-icons-wrapper {
+    display: flex;
+    align-items: center; /* Alinha os centros dos ícones */
+    gap: 15px;
+}

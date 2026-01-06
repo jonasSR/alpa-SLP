@@ -1,0 +1,22 @@
+{
+  "name": "ALPA - São Luiz do Paraitinga",
+  "short_name": "ALPA",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#fefae0",
+  "theme_color": "#bc6c25",
+  "icons": [
+    {
+      "src": "logo-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
