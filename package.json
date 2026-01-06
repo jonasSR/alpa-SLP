@@ -1,0 +1,21 @@
+{
+  "name": "alpa-slp",
+  "version": "1.0.0",
+  "description": "Website for ALPA - Associação Luizense Protetora dos Animais (animal protection organization)",
+  "main": "index.html",
+  "scripts": {
+    "dev": "http-server",
+    "deploy": "vercel deploy"
+  },
+  "keywords": [
+    "animals",
+    "protection",
+    "adoption",
+    "donation"
+  ],
+  "author": "ALPA",
+  "license": "MIT",
+  "devDependencies": {
+    "@vercel/analytics": "^1.4.0"
+  }
+}
